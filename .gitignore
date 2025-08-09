@@ -1,0 +1,7 @@
+__pycache__/
+.vscode/
+voitures_*
+preparation_instance.pkl
+Model/random_forest_model.pkl
+Model/voitures_avito_clean.csv
+View/venv

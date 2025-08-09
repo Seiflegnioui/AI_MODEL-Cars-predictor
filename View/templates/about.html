@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - AutoAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        purple: {
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        },
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5, #9333ea);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-car text-purple-600 text-2xl mr-2"></i>
+                    <span class="text-purple-600 font-bold text-xl">AutoAI</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="/" class="text-gray-700 hover:text-purple-600 transition flex items-center">
+                        <i class="fas fa-home mr-2"></i> Accueil
+                    </a>
+                    <a href="/about" class="text-purple-600 font-medium transition flex items-center">
+                        <i class="fas fa-info-circle mr-2"></i> À propos
+                    </a>
+                    <a href="/contact" class="text-gray-700 hover:text-purple-600 transition flex items-center">
+                        <i class="fas fa-envelope mr-2"></i> Contact
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-purple-600 to-purple-700 text-white py-16">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">Notre <span class="">Mission</span></h1>
+            <p class="text-xl md:text-2xl opacity-90 animate-fade-in" style="animation-delay: 0.2s;">
+                Révolutionner l'estimation des véhicules grâce à l'intelligence artificielle
+            </p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div class="animate-fade-in">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">À propos du <span class="gradient-text">projet</span></h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        <strong class="text-purple-600">AutoAI</strong> est une application intelligente conçue pour prédire le prix des véhicules
+                        d'occasion en fonction de leurs caractéristiques. Grâce à l'intelligence artificielle, elle fournit une
+                        estimation précise du prix en quelques secondes.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Notre solution permet aux utilisateurs d'obtenir une évaluation juste et transparente de leur véhicule,
+                        basée sur des données réelles et des algorithmes avancés.
+                    </p>
+                </div>
+                <div class="animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="bg-white rounded-xl p-8 shadow-lg card-hover">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-brain text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-4">Technologie IA</h3>
+                        <p class="text-gray-600 text-center">
+                            Utilisation d'algorithmes de machine learning avancés pour des prédictions précises et fiables.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <div class="animate-fade-in" style="animation-delay: 0.4s;">
+                    <div class="bg-white rounded-xl p-8 shadow-lg card-hover h-full">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-chart-line text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-4">Modèle Random Forest</h3>
+                        <p class="text-gray-600 text-center">
+                            Ce système utilise un algorithme <strong class="text-purple-600">Random Forest</strong>, entraîné sur un grand ensemble de
+                            données collecté à partir de la plateforme <strong class="text-purple-600">Avito</strong>.
+                        </p>
+                        <div class="mt-6 bg-gray-100 rounded-full h-4">
+                            <div class="bg-gradient-to-r from-purple-600 to-purple-700 h-4 rounded-full w-[85%]"></div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2 text-center">Précision du modèle : <strong>85%</strong></p>
+                    </div>
+                </div>
+                <div class="animate-fade-in" style="animation-delay: 0.5s;">
+                    <div class="bg-white rounded-xl p-8 shadow-lg card-hover h-full">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-database text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-4">Sources de données</h3>
+                        <p class="text-gray-600 text-center">
+                            Données collectées à partir de milliers d'annonces vérifiées pour garantir des estimations réalistes
+                            et adaptées au marché local.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden animate-fade-in" style="animation-delay: 0.6s;">
+                <div class="p-8 md:p-10">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Équipe de développement</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="flex flex-col items-center text-center">
+                           
+                            <h3 class="text-xl font-semibold">Sifeddine Legnioui</h3>
+                            <p class="text-gray-600">AI & Data Science Student Dans L'univesité Hassan II</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            
+                            <h3 class="text-xl font-semibold">Mouad Mourafiq</h3>
+                            <p class="text-gray-600">AI & Data Science Student  Dans L'univesité Hassan II</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <p class="text-lg text-gray-700">
+                            <strong>Université :</strong> Université Hassan II de Casablanca – Faculté des Sciences Ben M'Sik
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-car mr-2"></i> AutoAI
+                    </h3>
+                    <p class="text-gray-400">Solution intelligente d'estimation des prix des véhicules par IA.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white transition">Accueil</a></li>
+                        <li><a href="/about" class="text-gray-400 hover:text-white transition">À propos</a></li>
+                        <li><a href="/contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">contact@autoai.ma</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+212 6 00 00 00 00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 AutoAI. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

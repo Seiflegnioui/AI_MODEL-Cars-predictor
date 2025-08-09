@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Vehicle Price Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        },
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .price-glow {
+            text-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <!-- Prediction Card -->
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden animate-fade-in card-hover">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-primary-600 to-primary-700 px-8 py-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold text-white">AI Price Prediction Result</h1>
+                        <p class="text-primary-100">Your vehicle's estimated market value</p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 p-3 rounded-full">
+                        <i class="fas fa-robot text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Prediction Content -->
+            <div class="p-8">
+                <!-- Price Highlight -->
+                <div class="text-center py-8">
+                    <p class="text-gray-500 mb-2 uppercase tracking-wider text-sm font-medium">Predicted Market Value</p>
+                    <div class="text-5xl font-bold text-primary-600 mb-1 price-glow animate-pulse-slow">{{price | int}} <span class="text-2xl">MAD</span></div>
+                    <div class="inline-flex items-center bg-primary-50 text-primary-700 px-3 py-1 rounded-full text-xs font-medium mt-2">
+                        <i class="fas fa-bolt mr-1"></i> AI-powered estimation
+                    </div>
+                </div>
+                
+                <!-- Confidence Meter -->
+                <div class="bg-gray-50 rounded-lg p-6 mb-8">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-medium text-gray-700">Prediction Confidence</h4>
+                        <span class="text-primary-600 font-bold">85%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-gradient-to-r from-green-400 to-green-500 h-2.5 rounded-full" style="width: 92%"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-500">Our model is highly confident in this estimation based on market data.</p>
+                </div>
+                
+                <!-- Vehicle Details -->
+                <div class="border-t border-gray-100 pt-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-car text-primary-600 mr-2"></i> Vehicle Specifications
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                            <p class="text-gray-500 text-sm flex items-center">
+                                <i class="fas fa-car mr-2 text-primary-500"></i> Make & Model
+                            </p>
+                            <p class="font-medium mt-1">{{name}}</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                            <p class="text-gray-500 text-sm flex items-center">
+                                <i class="fas fa-calendar-alt mr-2 text-primary-500"></i> Year
+                            </p>
+                            <p class="font-medium mt-1">{{year}}</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                            <p class="text-gray-500 text-sm flex items-center">
+                                <i class="fas fa-tachometer-alt mr-2 text-primary-500"></i> Kilométrage
+                            </p>
+                            <p class="font-medium mt-1">{{kilom}} km</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                            <p class="text-gray-500 text-sm flex items-center">
+                                <i class="fas fa-cogs mr-2 text-primary-500"></i> Boite a vitesse
+                            </p>
+                            <p class="font-medium mt-1">{{"Automatique" if vitesse == 0 else "Manuelle"}}</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                            <p class="text-gray-500 text-sm flex items-center">
+                                <i class="fas fa-gas-pump mr-2 text-primary-500"></i> Type de carburant
+                            </p>
+                            <p class="font-medium mt-1">{{carburant}}</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                            <p class="text-gray-500 text-sm flex items-center">
+                                <i class="fas fa-star mr-2 text-primary-500"></i> Etat
+                            </p>
+                            <p class="font-medium mt-1">{{etat}}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Disclaimer -->
+                <div class="mt-8 bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-info-circle text-blue-400 mt-1"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-blue-700">
+                                This AI-generated estimate serves as a market reference. Actual prices may vary based on location, demand, and vehicle condition. For precise valuation, consider professional inspection.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button class="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-md flex items-center justify-center">
+                        <i class="fas fa-file-pdf mr-2"></i> Get Detailed Report
+                    </button>
+                    <button class="px-6 py-3 border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center">
+                        <a href='/' class="fas fa-redo mr-2"></a> Try Another Vehicle
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+       
+    </div>
+</body>
+</html>

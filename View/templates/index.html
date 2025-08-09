@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évaluation Véhicule par IA | AutoAI</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://img.icons8.com/ios-filled/50/9B59B6/car.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .equal-height {
+            min-height: 650px;
+        }
+        @media (max-width: 1024px) {
+            .equal-height {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-lg z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-car text-purple-600 text-2xl mr-2"></i>
+                    <span class="text-purple-600 font-bold text-xl">AutoAI</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-purple-600 transition flex items-center">
+                        <i class="fas fa-home mr-2"></i> Accueil
+                    </a>
+                    <a href="/about" class="text-gray-700 hover:text-purple-600 transition flex items-center">
+                        <i class="fas fa-info-circle mr-2"></i> À propos
+                    </a>
+                    <a href="#" class="text-gray-700 hover:text-purple-600 transition flex items-center">
+                        <i class="fas fa-envelope mr-2"></i> Contact
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-purple-600 to-purple-800 text-white py-12 mt-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-3xl mx-auto">
+                <i class="fas fa-robot text-5xl mb-6 animate-float"></i>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Évaluation Véhicule par IA</h1>
+                <p class="text-xl mb-8">Obtenez une estimation de prix instantanée et précise grâce à nos algorithmes avancés</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="bg-white bg-opacity-20 px-4 py-2 rounded-lg flex items-center">
+                        <i class="fas fa-bolt mr-2"></i> Précision 85%
+                    </div>
+                    <div class="bg-white bg-opacity-20 px-4 py-2 rounded-lg flex items-center">
+                        <i class="fas fa-clock mr-2"></i> Résultats instantanés
+                    </div>
+                    <div class="bg-white bg-opacity-20 px-4 py-2 rounded-lg flex items-center">
+                        <i class="fas fa-lock mr-2"></i> Sécurisé & Privé
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Comment ça marche</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-lg bg-gray-50 animate-fade-in" style="animation-delay: 0.1s;">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-edit text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Saisissez les détails</h3>
+                    <p class="text-gray-600">Remplissez les caractéristiques de votre véhicule via notre formulaire simple</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-gray-50 animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-brain text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Analyse par IA</h3>
+                    <p class="text-gray-600">Nos algorithmes analysent des milliers de points de données</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-gray-50 animate-fade-in" style="animation-delay: 0.5s;">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Obtenez l'estimation</h3>
+                    <p class="text-gray-600">Recevez votre estimation de prix précise instantanément</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form and Image Section -->
+    <div class="container mx-auto px-4 py-12">
+        <div class="flex flex-col lg:flex-row gap-8 items-stretch">
+            <!-- Image Section -->
+            <div class="w-full lg:w-1/2 hidden lg:block equal-height">
+                <div class="relative h-full overflow-hidden rounded-xl">
+                    <img src="../static/car-driving-7.gif" 
+                         alt="Illustration évaluation voiture" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-purple-900/70 to-purple-600/30 flex items-end p-8">
+                        <div class="text-white">
+                            <h3 class="text-2xl font-bold mb-2">Pourquoi choisir notre outil ?</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mr-2 mt-1 text-purple-300"></i>
+                                    <span>Alimenté par une IA avancée formée sur des milliers de transactions</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mr-2 mt-1 text-purple-300"></i>
+                                    <span>Prend en compte tous les facteurs du marché pour un prix précis</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mr-2 mt-1 text-purple-300"></i>
+                                    <span>Mis à jour quotidiennement avec les dernières données</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mr-2 mt-1 text-purple-300"></i>
+                                    <span>Utilisé par des professionnels et particuliers partout au Maroc</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Form Section -->
+            <div class="w-full lg:w-1/2 equal-height">
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden h-full animate-fade-in">
+                    <!-- Form Header -->
+                    <div class="bg-gradient-to-r from-purple-600 to-purple-700 px-8 py-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-car text-white text-3xl mr-4"></i>
+                            <div>
+                                <h1 class="text-2xl font-bold text-white">Estimation du prix du véhicule</h1>
+                                <p class="text-purple-100">Remplissez tous les champs pour une évaluation précise</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Form Content -->
+                    <form class="p-6 space-y-6" method="POST" action="/predict">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Année-Modèle -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                                    <i class="fas fa-calendar-alt text-purple-600 mr-2"></i> Année-Modèle *
+                                </label>
+                                <input type="number" name="Année-Modèle" placeholder="ex. 2020" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
+                                       required>
+                            </div>
+                            
+                            <!-- Boite de vitesses -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                                    <i class="fas fa-cogs text-purple-600 mr-2"></i> Boite de vitesses *
+                                </label>
+                                <select name="Boite de vitesses" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
+                                        required>
+                                    <option value="">Sélectionnez</option>
+                                    <option value="0">Automatique</option>
+                                    <option value="1">Manuelle</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Type de carburant -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                                    <i class="fas fa-gas-pump text-purple-600 mr-2"></i> Type de carburant *
+                                </label>
+                                <select name="Type de carburant" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
+                                        required>
+                                    <option value="">Sélectionnez</option>
+                                    <option value="Essence">Essence</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <option value="Hybrid">Hybride</option>
+                                    <option value="Electric">Électrique</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Kilométrage -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                                    <i class="fas fa-tachometer-alt text-purple-600 mr-2"></i> Kilométrage *
+                                </label>
+                                <input type="number" name="Kilométrage" placeholder="ex. 50000 km" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
+                                       required>
+                            </div>
+                            
+                            <!-- Marque -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                                    <i class="fas fa-car text-purple-600 mr-2"></i> Marque *
+                                </label>
+                                <input type="text" name="Marque" placeholder="ex. Toyota" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
+                                       required>
+                            </div>
+                            
+                            <!-- Modèle -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                                    <i class="fas fa-car-side text-purple-600 mr-2"></i> Modèle *
+                                </label>
+                                <input type="text" name="Modèle" placeholder="ex. Corolla" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
+                                       required>
+                            </div>
+                            
+                            <!-- Nombre de portes -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                                    <i class="fas fa-door-closed text-purple-600 mr-2"></i> Nombre de portes *
+                                </label>
+                                <select name="Nombre de portes" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
+                                        required>
+                                    <option value="">Sélectionnez</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Origine -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                                    <i class="fas fa-flag text-purple-600 mr-2"></i> Origine *
+                                </label>
+                                <select name="Origine" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition" required>
+                                    <option value="">Sélectionnez</option>
+                                    <option value="Dédouanée">Dédouanée</option>
+                                    <option value="Importée neuve">Importée neuve</option>
+                                    <option value="Pas encore dédouanée">Pas encore dédouanée</option>
+                                    <option value="WW au Maroc">WW au Maroc</option>
+                                </select>
+                            </div>
+    
+                            <!-- Première main -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                                    <i class="fas fa-key text-purple-600 mr-2"></i> Première main *
+                                </label>
+                                <div class="flex items-center space-x-6">
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="Première main" value="1" class="h-5 w-5 text-purple-600 focus:ring-purple-500" required>
+                                        <span class="ml-2">Oui</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="Première main" value="0" class="h-5 w-5 text-purple-600 focus:ring-purple-500" required>
+                                        <span class="ml-2">Non</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Puissance fiscale -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                                    <i class="fas fa-bolt text-purple-600 mr-2"></i> Puissance fiscale *
+                                </label>
+                                <input type="number" name="Puissance fiscale" placeholder="ex. 5 CV" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
+                                       required>
+                            </div>
+                            
+                            <!-- État -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                                    <i class="fas fa-star text-purple-600 mr-2"></i> État *
+                                </label>
+                                <select name="État" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"
+                                        required>
+                                    <option value="">Sélectionnez</option>
+                                    <option value="0">Neuf</option>
+                                    <option value="1">Excellent</option>
+                                    <option value="2">Très bon</option>
+                                    <option value="3">Bon</option>
+                                    <option value="4">Correct</option>
+                                    <option value="5">Pour Pièces</option>
+                                    <option value="6">Endommagé</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="pt-6">
+                            <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg">
+                                <i class="fas fa-calculator mr-2"></i> Calculer la valeur
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Recommandé par des milliers d'utilisateurs</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Mohammed K.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"L'estimation était parfaite ! J'ai vendu ma voiture exactement au prix prédit."</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Fatima Z.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Estimation incroyablement précise qui m'a aidé à négocier un prix équitable."</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Karim B.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"M'a fait gagner des heures de recherche. L'IA connaissait mieux le marché que les concessionnaires locaux !"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-car mr-2"></i> AutoAI
+                    </h3>
+                    <p class="text-gray-400">Technologie d'évaluation des véhicules par IA pour des prévisions de prix précises.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Accueil</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Outil d'évaluation</a></li>
+                        <li><a href="/about" class="text-gray-400 hover:text-white transition">À propos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Ressources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Politique de confidentialité</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Conditions d'utilisation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Nous contacter</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-purple-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-purple-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-pink-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 AutoAI. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
